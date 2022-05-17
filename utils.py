@@ -234,7 +234,7 @@ def plot_cumulative_eff_mass(path_fig, most_common_HLT, color, eff_HLT, err_eff_
     ax.legend(prop={'size': 6})
     plt.savefig(path_fig+'cumulative_eff_mass/Trigger_cumu_eff_'+ mode +'_'+ eff_computation +'.pdf', bbox_inches='tight')
     return
-
+'''
 def plot_raw_eff_mass(path_fig, most_common_HLT, color, eff_HLT, err_eff_HLT, mode, eff_computation):
     mass = [85,100,125,150,200,250,300,350,400,450,500,600,700,800,900,1000]
     delta= [[-6,-3,0,3,6],[-10,-5,0,5,10],[-14,-7,0,7,14]]
@@ -247,6 +247,17 @@ def plot_raw_eff_mass(path_fig, most_common_HLT, color, eff_HLT, err_eff_HLT, mo
     for i in range(len(most_common_HLT)):
         ax.bar((np.array(mass[2:4])+delta[1][i]),([eff[i] for eff in eff_HLT[2:4]]),yerr= (abs(np.array([err[i] for err in err_eff_HLT[2:4]]).T-np.array([eff[i] for eff in eff_HLT[2:4]]))),error_kw=dict(elinewidth=0.5), width=wi[1],label= most_common_HLT[i], color = color[i])
         ax.bar((np.array(mass[4:])+delta[2][i]),([eff[i] for eff in eff_HLT[4:]]),yerr= (abs(np.array([err[i] for err in err_eff_HLT[4:]]).T-np.array([eff[i] for eff in eff_HLT[4:]]))),error_kw=dict(elinewidth=0.5), width=wi[2],label= most_common_HLT[i], color = color[i])
+    ax.set_ylabel('raw efficiency')
+    ax.set_xlabel('HNL Mass [GeV]')
+    plt.savefig(path_fig+'cumulative_eff_mass/Trigger_raw_eff_'+ mode +'_'+ eff_computation +'.pdf', bbox_inches='tight')
+    return
+'''
+def plot_raw_eff_mass(path_fig, most_common_HLT, color, eff_HLT, err_eff_HLT, mode, eff_computation):
+    mass = [85,100,125,150,200,250,300,350,400,450,500,600,700,800,900,1000]
+    fig, ax = plt.subplots(1,1)
+    for i in range(len(most_common_HLT)):
+        ax.errorbar(np.array(mass),([eff[i] for eff in eff_HLT]),yerr= abs(np.array([err[i] for err in err_eff_HLT]).T-np.array([eff[i] for eff in eff_HLT])), label= most_common_HLT[i], color = color[i], linewidth=0.5)
+    ax.legend(prop={'size': 6})
     ax.set_ylabel('raw efficiency')
     ax.set_xlabel('HNL Mass [GeV]')
     plt.savefig(path_fig+'cumulative_eff_mass/Trigger_raw_eff_'+ mode +'_'+ eff_computation +'.pdf', bbox_inches='tight')

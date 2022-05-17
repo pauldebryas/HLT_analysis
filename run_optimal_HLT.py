@@ -252,5 +252,5 @@ for mode in ['ttt','tte','ttm','tee','tmm','tem']:
         HLT[HNLsamples] = HLT_selected
 
     #save 
-    with open('optimal_HLT_'+mode+'.json', 'w') as fp:
+    with open('optimal_out/optimal_HLT_'+mode+'.json', 'w') as fp:
         json.dump(HLT, fp)

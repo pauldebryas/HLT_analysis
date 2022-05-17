@@ -164,7 +164,7 @@ color = ['cornflowerblue','indianred','sandybrown','darkseagreen','magenta']
 most_common_HLT_dic = {}
 for mode in ['tte','ttm','tee','tmm','tem']:
     #load the file with optimal HLT
-    with open('optimal_HLT_'+mode+'.json', 'r') as fp:
+    with open('optimal_out/optimal_HLT_'+mode+'.json', 'r') as fp:
         HLT = json.load(fp)
 
     #remove bad HLT and find the list off all HLT available
